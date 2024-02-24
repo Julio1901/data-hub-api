@@ -21,7 +21,6 @@ public class UserController {
 
     @PostMapping("/users")
     public ResponseEntity<Object> saveUser(@RequestBody @Valid UserDto userDto){
-
         var userModel = new UserModel();
         BeanUtils.copyProperties(userDto, userModel);
         try{
@@ -34,8 +33,6 @@ public class UserController {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unknown error when saving user");
             }
         }
-
     }
-
 
 }
