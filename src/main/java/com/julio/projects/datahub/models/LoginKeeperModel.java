@@ -19,13 +19,13 @@ public class LoginKeeperModel extends RepresentationModel<LoginKeeperModel> impl
     @Column(nullable = true)
     private String webSiteLink;
     @Column(nullable = true)
-    private String payDay;
+    private Integer payDay;
 
-    public String getPayDay() {
+    public Integer getPayDay() {
         return payDay;
     }
 
-    public void setPayDay(String payDay) {
+    public void setPayDay(Integer payDay) {
         this.payDay = payDay;
     }
 

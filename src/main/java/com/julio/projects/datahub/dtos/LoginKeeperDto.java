@@ -8,7 +8,7 @@ public record LoginKeeperDto(@NotBlank String serviceName,
                              @NotBlank String password,
                              @Nullable  @Schema(nullable = true)String webSiteLink,
                              @NotBlank String description,
-                             @Nullable @Schema(nullable = true) String payDay
+                             @Nullable @Schema(nullable = true) Integer payDay
                              ) {
 
 }

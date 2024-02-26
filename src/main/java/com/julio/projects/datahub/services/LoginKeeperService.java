@@ -28,6 +28,11 @@ public class LoginKeeperService {
     public ResponseEntity<Object> saveLoginInfo(@Valid LoginKeeperDto loginKeeperDto) {
         var loginInfoModel = new LoginKeeperModel();
         BeanUtils.copyProperties(loginKeeperDto, loginInfoModel);
+
+        if (loginKeeperDto.payDay() != null && (loginKeeperDto.payDay() < 1 || loginKeeperDto.payDay() > 31)) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("The payment must be in the range between 1 and 31");
+        }
+
         try{
             return ResponseEntity.status(HttpStatus.CREATED).body(loginKeeperRepository.save(loginInfoModel));
         }catch (Exception e){
