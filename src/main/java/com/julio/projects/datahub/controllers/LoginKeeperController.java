@@ -48,4 +48,9 @@ public class LoginKeeperController {
     public ResponseEntity<Object> getByServiceNameAndOwner(@RequestBody @Valid GetLoginKeeperByNameAndOwnerDto getLoginKeeperByNameAndOwnerDto){
         return loginKeeperService.getByServiceNameAndOwner(getLoginKeeperByNameAndOwnerDto.serviceName(), getLoginKeeperByNameAndOwnerDto.owner());
     }
+
+    @PutMapping("/login-keeper")
+    public ResponseEntity<Object> updateLoginKeeper(@RequestBody @Valid LoginKeeperDto loginKeeperDto){
+        return loginKeeperService.updateLoginInfo(loginKeeperDto);
+    }
 }

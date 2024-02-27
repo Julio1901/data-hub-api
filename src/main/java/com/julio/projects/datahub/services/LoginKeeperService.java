@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LoginKeeperService {
@@ -64,6 +65,22 @@ public class LoginKeeperService {
 
     }
 
+    public  ResponseEntity<Object> updateLoginInfo(LoginKeeperDto loginKeeperDto) {
+        Optional<LoginKeeperModel> result = loginKeeperRepository.findById(loginKeeperDto.loginId());
+        if(result.isPresent()){
+            LoginKeeperModel loginKeeper = result.get();
+            loginKeeper.setServiceName(loginKeeperDto.serviceName());
+            loginKeeper.setPassword(loginKeeperDto.password());
+            loginKeeper.setWebSiteLink(loginKeeperDto.webSiteLink());
+            loginKeeper.setPayDay(loginKeeperDto.payDay());
+            loginKeeper.setOwner(loginKeeperDto.owner());
+            loginKeeper.setDescription(loginKeeperDto.description());
+
+            return ResponseEntity.status(HttpStatus.OK).body(loginKeeperRepository.save(loginKeeper));
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Data has not been modified");
+        }
+    }
 
 
 
