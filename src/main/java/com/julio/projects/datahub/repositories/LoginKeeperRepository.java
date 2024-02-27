@@ -8,4 +8,5 @@ import java.util.UUID;
 
 @Repository
 public interface LoginKeeperRepository extends JpaRepository<LoginKeeperModel, UUID> {
+    LoginKeeperModel findByServiceNameAndOwner(String serviceName, String owner);
 }

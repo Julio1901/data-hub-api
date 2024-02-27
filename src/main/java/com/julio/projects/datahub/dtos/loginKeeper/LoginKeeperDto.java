@@ -1,4 +1,4 @@
-package com.julio.projects.datahub.dtos;
+package com.julio.projects.datahub.dtos.loginKeeper;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Nullable;
@@ -8,7 +8,8 @@ public record LoginKeeperDto(@NotBlank String serviceName,
                              @NotBlank String password,
                              @Nullable  @Schema(nullable = true)String webSiteLink,
                              @NotBlank String description,
-                             @Nullable @Schema(nullable = true) Integer payDay
+                             @Nullable @Schema(nullable = true) Integer payDay,
+                             @NotBlank String owner
                              ) {
 
 }

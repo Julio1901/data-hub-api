@@ -1,14 +1,11 @@
 package com.julio.projects.datahub.services;
 
-import com.julio.projects.datahub.controllers.LoginKeeperController;
-import com.julio.projects.datahub.dtos.LoginKeeperDto;
+import com.julio.projects.datahub.dtos.loginKeeper.LoginKeeperDto;
 import com.julio.projects.datahub.models.LoginKeeperModel;
 import com.julio.projects.datahub.repositories.LoginKeeperRepository;
-import com.julio.projects.datahub.repositories.login.LoginRepository;
 import jakarta.validation.Valid;
-import org.apache.coyote.Response;
+
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class LoginKeeperService {
@@ -56,5 +52,19 @@ public class LoginKeeperService {
         }
 
     }
+
+    public ResponseEntity<Object> getByServiceNameAndOwner(String serviceName, String owner) {
+       LoginKeeperModel result = loginKeeperRepository.findByServiceNameAndOwner(serviceName, owner);
+
+       if(result != null){
+           return  ResponseEntity.status(HttpStatus.OK).body(result);
+       }else {
+           return  ResponseEntity.status(HttpStatus.OK).body("Register not found. Check the name of the service and the owner.");
+       }
+
+    }
+
+
+
 
 }

@@ -20,6 +20,15 @@ public class LoginKeeperModel extends RepresentationModel<LoginKeeperModel> impl
     private String webSiteLink;
     @Column(nullable = true)
     private Integer payDay;
+    private String owner;
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
 
     public Integer getPayDay() {
         return payDay;

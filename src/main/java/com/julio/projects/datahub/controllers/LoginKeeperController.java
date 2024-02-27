@@ -1,19 +1,15 @@
 package com.julio.projects.datahub.controllers;
 
-import com.julio.projects.datahub.dtos.LoginKeeperDto;
-import com.julio.projects.datahub.models.LoginKeeperModel;
+import com.julio.projects.datahub.dtos.loginKeeper.GetLoginKeeperByNameAndOwnerDto;
+import com.julio.projects.datahub.dtos.loginKeeper.LoginKeeperDto;
 import com.julio.projects.datahub.services.LoginKeeperService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Tag(name = "Login Keeper")
@@ -48,4 +44,8 @@ public class LoginKeeperController {
         return loginKeeperService.getAllLoginsInfo();
     }
 
+    @PostMapping("/login-keeper/get-data")
+    public ResponseEntity<Object> getByServiceNameAndOwner(@RequestBody @Valid GetLoginKeeperByNameAndOwnerDto getLoginKeeperByNameAndOwnerDto){
+        return loginKeeperService.getByServiceNameAndOwner(getLoginKeeperByNameAndOwnerDto.serviceName(), getLoginKeeperByNameAndOwnerDto.owner());
+    }
 }
