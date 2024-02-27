@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @Tag(name = "Login Keeper")
 public class LoginKeeperController {
@@ -52,5 +54,10 @@ public class LoginKeeperController {
     @PutMapping("/login-keeper")
     public ResponseEntity<Object> updateLoginKeeper(@RequestBody @Valid LoginKeeperDto loginKeeperDto){
         return loginKeeperService.updateLoginInfo(loginKeeperDto);
+    }
+
+    @DeleteMapping("/login-keeper/{loginId}")
+    public ResponseEntity<Object> deleteLoginKeeper(@PathVariable (value ="loginId") UUID loginKeeperId) {
+        return loginKeeperService.deleteLoginKeeper(loginKeeperId);
     }
 }

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class LoginKeeperService {
@@ -82,6 +83,14 @@ public class LoginKeeperService {
         }
     }
 
+    public ResponseEntity<Object> deleteLoginKeeper(UUID loginKeeperId) {
+        try{
+            loginKeeperRepository.deleteById(loginKeeperId);
+            return ResponseEntity.status(HttpStatus.OK).body("Data deleted successfully");
 
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error when deleting data");
+        }
+    }
 
 }
