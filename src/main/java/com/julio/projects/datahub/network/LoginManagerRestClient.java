@@ -7,6 +7,8 @@ import org.springframework.web.client.RestClient;
 
 import java.util.List;
 
+import static com.julio.projects.datahub.network.EndPoints.GETA_ALL_LOGIN_MANAGER_DATA_ENDPOINT;
+
 @Component
 public class LoginManagerRestClient {
 
@@ -14,9 +16,10 @@ public class LoginManagerRestClient {
 
     public  List<LoginManagerDto>  getAllData() {
         return  restClient.get()
-                .uri("http://localhost:8083/login-manager")
+                .uri(GETA_ALL_LOGIN_MANAGER_DATA_ENDPOINT)
                 .retrieve()
-                .body(new ParameterizedTypeReference<List<LoginManagerDto>>() {});
+                .body(new ParameterizedTypeReference<>() {
+                });
     }
 
 }
