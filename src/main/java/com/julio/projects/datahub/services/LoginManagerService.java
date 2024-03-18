@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class LoginManagerService {
@@ -19,6 +20,14 @@ public class LoginManagerService {
     public ResponseEntity<Object> getAllData() {
         try{
             return ResponseEntity.status(HttpStatus.OK).body(loginManagerRepository.getAllLoginManagerData());
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error to get logins info. Error: " + e.getMessage());
+        }
+    }
+
+    public ResponseEntity<Object>getLoginById(UUID loginManagerID){
+        try{
+            return ResponseEntity.status(HttpStatus.OK).body(loginManagerRepository.getLoginById(loginManagerID));
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error to get logins info. Error: " + e.getMessage());
         }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
 public class LoginManagerRepositoryImpl implements LoginManagerRepository {
@@ -21,4 +22,11 @@ public class LoginManagerRepositoryImpl implements LoginManagerRepository {
     public List<LoginManagerDto> getAllLoginManagerData() {
         return loginManagerRestClient.getAllData();
     }
+
+    @Override
+    public LoginManagerDto getLoginById(UUID loginManagerID) {
+        return loginManagerRestClient.getLoginById(loginManagerID);
+    }
+
+
 }
