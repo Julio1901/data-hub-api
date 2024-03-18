@@ -32,4 +32,12 @@ public class LoginManagerService {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error to get logins info. Error: " + e.getMessage());
         }
     }
+
+    public ResponseEntity<Object> createLogin(LoginManagerDto loginDto) {
+        try{
+            return ResponseEntity.status(HttpStatus.OK).body(loginManagerRepository.createLogin(loginDto));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error to get logins info. Error: " + e.getMessage());
+        }
+    }
 }

@@ -11,4 +11,7 @@ import java.util.UUID;
 public interface LoginManagerRepository {
     List<LoginManagerDto> getAllLoginManagerData();
     LoginManagerDto getLoginById(UUID loginManagerID);
+
+    LoginManagerDto createLogin(LoginManagerDto loginManagerDto);
+
 }

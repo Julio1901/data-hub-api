@@ -28,5 +28,10 @@ public class LoginManagerRepositoryImpl implements LoginManagerRepository {
         return loginManagerRestClient.getLoginById(loginManagerID);
     }
 
+    @Override
+    public LoginManagerDto createLogin(LoginManagerDto loginManagerDto) {
+        return loginManagerRestClient.createLogin(loginManagerDto);
+    }
+
 
 }

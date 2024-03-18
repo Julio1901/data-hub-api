@@ -1,14 +1,12 @@
 package com.julio.projects.datahub.controllers.loginManager;
 
+import com.julio.projects.datahub.dtos.LoginManagerDto;
 import com.julio.projects.datahub.network.LoginManagerRestClient;
 import com.julio.projects.datahub.services.LoginManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -17,6 +15,11 @@ public class LoginManagerController {
 
     @Autowired
     LoginManagerService loginManagerService;
+
+    @PostMapping("/login-manager")
+    public ResponseEntity<Object> saveLoginInfo (@RequestBody LoginManagerDto loginDto){
+        return loginManagerService.createLogin(loginDto);
+    }
 
     @GetMapping("/login-manager")
     public ResponseEntity<Object> getAllLogins() {
