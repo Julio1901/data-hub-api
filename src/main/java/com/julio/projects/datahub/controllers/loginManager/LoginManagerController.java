@@ -37,4 +37,9 @@ public class LoginManagerController {
         return loginManagerService.updateLogin(loginManagerDto);
     }
 
+    @DeleteMapping("/login-manager/{loginId}")
+    public ResponseEntity<Object> deleteLogin(@PathVariable (value ="loginId") UUID loginManagerID) {
+        return loginManagerService.deleteLogin(loginManagerID);
+    }
+
 }

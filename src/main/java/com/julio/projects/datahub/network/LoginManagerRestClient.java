@@ -52,4 +52,12 @@ public class LoginManagerRestClient {
                 .body(new ParameterizedTypeReference<>() {
                 });
     }
+
+    public String deleteLogin(UUID loginManagerID) {
+        return  restClient.delete()
+                .uri(DELETE_LOGIN + loginManagerID.toString())
+                .retrieve()
+                .body(new ParameterizedTypeReference<>() {
+                });
+    }
 }

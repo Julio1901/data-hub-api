@@ -38,5 +38,10 @@ public class LoginManagerRepositoryImpl implements LoginManagerRepository {
         return loginManagerRestClient.updateLogin(loginManagerDto);
     }
 
+    @Override
+    public String deleteLogin(UUID loginManagerID) {
+        return loginManagerRestClient.deleteLogin(loginManagerID);
+    }
+
 
 }

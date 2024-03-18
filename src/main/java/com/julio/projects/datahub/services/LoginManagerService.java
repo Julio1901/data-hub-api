@@ -48,4 +48,12 @@ public class LoginManagerService {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error to update login info. Error: " + e.getMessage());
         }
     }
+
+    public ResponseEntity<Object> deleteLogin(UUID loginManagerID) {
+        try{
+            return ResponseEntity.status(HttpStatus.OK).body(loginManagerRepository.deleteLogin(loginManagerID));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error to delete login info. Error: " + e.getMessage());
+        }
+    }
 }
