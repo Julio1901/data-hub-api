@@ -42,4 +42,14 @@ public class LoginManagerRestClient {
                 .body(new ParameterizedTypeReference<>() {
                 });
     }
+
+    public LoginManagerDto updateLogin(LoginManagerDto loginManagerDto) {
+        return  restClient.put()
+                .uri(UPDATE_LOGIN)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(loginManagerDto)
+                .retrieve()
+                .body(new ParameterizedTypeReference<>() {
+                });
+    }
 }

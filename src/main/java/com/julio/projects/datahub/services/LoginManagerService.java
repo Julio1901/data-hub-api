@@ -40,4 +40,12 @@ public class LoginManagerService {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error to get logins info. Error: " + e.getMessage());
         }
     }
+
+    public ResponseEntity<Object> updateLogin(LoginManagerDto loginManagerDto) {
+        try{
+            return ResponseEntity.status(HttpStatus.OK).body(loginManagerRepository.updateLogin(loginManagerDto));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error to update login info. Error: " + e.getMessage());
+        }
+    }
 }

@@ -14,4 +14,5 @@ public interface LoginManagerRepository {
 
     LoginManagerDto createLogin(LoginManagerDto loginManagerDto);
 
+    LoginManagerDto updateLogin(LoginManagerDto loginManagerDto);
 }
